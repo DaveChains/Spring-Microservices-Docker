@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    consul:
+      ribbon:
+        enabled: true
+      host: discovery
+      config:
+      enabled: true
+      discovery:
+         enabled: true
+         register: true
+         healthCheckInterval: 15s
+         health-check-timeout: 1s
+         tag-id: ${random.value}
+         instance-id: ${spring.application.name}:${spring.cloud.consul.discovery.instance_id:${random.value}}
+         tags: ${spring.cloud.consul.discovery.tag-id}
+  ribbon:
+    enabled: true
+    ServerListRefreshInterval: 1000
+encrypt:
+  failOnError: false
