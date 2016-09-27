@@ -1,0 +1,3 @@
+#Consul properties if you preffer can be here too
+spring.cloud.consul.discovery.preferIpAddress: true
+

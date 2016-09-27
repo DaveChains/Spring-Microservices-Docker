@@ -1,0 +1,33 @@
+#Your configuration for consul
+spring:
+  profiles: dev
+  application:
+    name: user
+  cloud:
+    consul:
+#      your discovery container, running consul
+      host: discovery
+      config:
+      enabled: true
+      discovery:
+         enabled: true
+         register: true
+         healthCheckInterval: 15s
+         health-check-timeout: 1s
+         tag-id: ${random.value}
+         instance-id: ${spring.application.name}:${spring.cloud.consul.discovery.instance_id:${random.value}}
+#         A unique tag id for consul DNS
+         tags: ${spring.cloud.consul.discovery.tag-id}
+  ribbon:
+        enabled: true
+  encrypt:
+      failOnError: false
+
+
+
+
+
+
+
+
+
